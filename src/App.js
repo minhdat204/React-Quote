@@ -5,7 +5,6 @@ import { useEffect, useState } from 'react';
 import './App.css';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
-import Modal from '@mui/material/Modal';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
@@ -18,15 +17,9 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import ShareIcon from '@mui/icons-material/Share';
 import IconButton from '@mui/material/IconButton';
 import CasinoIcon from '@mui/icons-material/Casino';
-import AddIcon from '@mui/icons-material/Add';
 import LightModeIcon from '@mui/icons-material/LightMode';
 import DarkModeIcon from '@mui/icons-material/DarkMode';
 import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';
-//textarea
-import { TextareaAutosize as BaseTextareaAutosize } from '@mui/base/TextareaAutosize';
-import { styled } from '@mui/system';
-//button
-import Button from '@mui/material/Button';
 
 function App() {
   const adviceData = [
@@ -152,7 +145,7 @@ function App() {
             <IconButton onClick={() => toggleMode()} aria-label="theme change" title='Theme change'>
               { mode? <DarkModeIcon /> : <LightModeIcon />}
             </IconButton>
-            
+
             <ModalAddAdvice handleAddAdvice={handleAddAdvice}/>
             
             <IconButton aria-label="share" title='Share'>
