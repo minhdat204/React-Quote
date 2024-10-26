@@ -5,6 +5,7 @@ import { useState } from 'react';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
+import Fade from '@mui/material/Fade';
 
 import IconButton from '@mui/material/IconButton';
 import AddIcon from '@mui/icons-material/Add';
@@ -24,11 +25,11 @@ const ModalAddAdvice = (props) => {
         left: '50%',
         transform: 'translate(-50%, -50%)',
         width: 600,
-        bgcolor: 'background.paper',
         border: '0px solid #000',
         boxShadow: 24,
         p: 4,
         borderRadius: '15px',
+        bgcolor: 'background.box',
     };
     //input textarea
     const blue = {
@@ -91,18 +92,24 @@ const ModalAddAdvice = (props) => {
             <Modal
               open={open}
               onClose={handleClose}
+              closeAfterTransition
+              backdrop ={{
+                timeout: 500,
+              }}
               aria-labelledby="modal-modal-title"
               aria-describedby="modal-modal-description"
             >
-              <Box sx={modalStyle}>
-                <Typography id="modal-modal-title" variant="h6" component="h1" marginBottom={'20px'} textAlign={'center'} gutterBottom>
-                  Add new advice
-                </Typography>
-                <TextareaAutosize id='inputAdd' aria-label="empty textarea" placeholder="Text here" fullWidth/>
-                <Box display = 'flex' justifyContent={'flex-end'} marginTop={'5px'}>
-                  <Button onClick={() => { props.handleAddAdvice(); setOpen(false) } } variant="contained" size='medium' sx={{borderRadius: '8px', fontWeight: '600'}}>Add</Button>
+              <Fade in={open}>
+                <Box sx={modalStyle}>
+                  <Typography id="modal-modal-title" fontWeight={'fontWeight.title'} variant="h6" component="h1" marginBottom={'20px'} textAlign={'center'} gutterBottom>
+                    Your advice
+                  </Typography>
+                  <TextareaAutosize id='inputAdd' sx={{bgcolor: 'background.inputAddAdvices'}} aria-label="empty textarea" placeholder="What's on your mind?" fullWidth/>
+                  <Box display = 'flex' justifyContent={'flex-end'} marginTop={'5px'}>
+                    <Button onClick={() => { props.handleAddAdvice(); setOpen(false) } } variant="contained" size='medium' sx={{borderRadius: '8px', fontWeight: 'fontWeight.title'}}>Add</Button>
+                  </Box>
                 </Box>
-              </Box>
+              </Fade>
             </Modal>
         </>
     )
