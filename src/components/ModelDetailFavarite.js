@@ -3,27 +3,13 @@ import React from "react";
 import { useState } from 'react';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
-//icon
-import FavoriteIcon from '@mui/icons-material/Favorite';
-import IconButton from '@mui/material/IconButton';
-import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';
 //modal
 import Modal from '@mui/material/Modal';
 //list
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
 
 import Fade from '@mui/material/Fade';
-
-import SearchIcon from '@mui/icons-material/Search';
-//pagination
-import Pagination from '@mui/material/Pagination';
-import Stack from '@mui/material/Stack';
-
-import InputAdornment from '@mui/material/InputAdornment';
-import TextField from '@mui/material/TextField';
 
 
 const ModalDetailFavorite = (props) => {
@@ -48,13 +34,15 @@ const ModalDetailFavorite = (props) => {
     //code base
     const fullContent = props.advice.content;
     const limitContent = props.advice.content.substring(0,50);
+    //show full content when limit is reached
     const ItemShow = `"${limitContent}${fullContent !== limitContent? '...' : '"'}`
     return (
         <>
+        {/*advice on list : khi nhấn vào sẽ mở detail */}
         <ListItemButton onClick={handleOpen} role={undefined} dense>
-            <ListItemText id={props.labelId} primary={ItemShow} />
+            <ListItemText id={props.labelId} primary={ItemShow} primaryTypographyProps={{ fontWeight: 'bold', fontStyle: 'italic' }} />
         </ListItemButton>
-
+        {/*open modal */}
         <Modal
             open={open}
             onClose={handleClose}
@@ -65,15 +53,16 @@ const ModalDetailFavorite = (props) => {
             aria-labelledby="modal-modal-title"
             aria-describedby="modal-modal-description"
         >
+            {/*hiệu ứng mơe đóng/ hiển thị chi tiết advice */}
             <Fade in={open}>
-            <Box sx={modalStyle}>
-                <Typography variant="subtitle1" sx={{ marginBottom: 1 }} color='#00ffd2' fontWeight={1000}>
-                    Advice#{props.advice.id}
-                </Typography>
-                <Typography gutterBottom variant="h5" component="div" fontStyle={'italic'} fontWeight={800}>
-                    "{fullContent}"
-                </Typography>
-            </Box>
+                <Box sx={modalStyle}>
+                    <Typography variant="subtitle1" sx={{ marginBottom: 1, color: 'adviceID' }} fontWeight={1000}>
+                        Advice#{props.advice.id}
+                    </Typography>
+                    <Typography gutterBottom variant="h5" component="div" fontStyle={'italic'} fontWeight={800}>
+                        "{fullContent}"
+                    </Typography>
+                </Box>
             </Fade>
         </Modal>
         </>

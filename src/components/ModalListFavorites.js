@@ -14,8 +14,6 @@ import Modal from '@mui/material/Modal';
 //list
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
-import ListItemButton from '@mui/material/ListItemButton';
-import ListItemText from '@mui/material/ListItemText';
 
 import Fade from '@mui/material/Fade';
 
@@ -48,25 +46,30 @@ const ModalListFavorites = (props) => {
 
     //code base
     //advice favorites list
-    const AdviceFavorite = props.adviceList.filter((advice) => advice.isLike === true);
-    //search
+    
+    //search favorite result/ nếu không search thì trả về mảng mặc định
     const [text, setText] = useState('');
-    const searchAdviceFavorite = AdviceFavorite.filter(advice => advice.content.toLowerCase().includes(text.toLowerCase()));//search realtime
-    //pagination
+    const searchAdviceFavorite = props.favoriteList.filter(advice => advice.content.toLowerCase().includes(text.toLowerCase()));//search realtime
+    //pagination / phân trang
     const itemsCount = searchAdviceFavorite.length;
     const itemsPerPage = 5;
     const totalPages = Math.ceil(itemsCount / itemsPerPage);
     const [page, setPage] = useState(1);
+    //xử lý trên search result/ cắt trang / mỗi trang 5 item
     const itemsOnPage = searchAdviceFavorite.slice(itemsPerPage * (page - 1), itemsPerPage * page);
+    //xử lý vc click vào số trên pagination bar
     const hanldeClickPage = (e, page) => {
       setPage(page);
     }
 
     return (
         <>
+            {/*líst icon */}
             <IconButton onClick={handleOpen} aria-label="list favorites" title='List favorites'>
               <FormatListBulletedIcon />
             </IconButton>
+
+            {/*open modal */}
             <Modal
               open={open}
               onClose={handleClose}
@@ -80,11 +83,15 @@ const ModalListFavorites = (props) => {
               aria-labelledby="modal-modal-title"
               aria-describedby="modal-modal-description"
             >
-              <Fade in={open}>
+              {/* modal content */}
+              {/*hiệu ứng khi đóng mở*/}
+              <Fade in={open}> 
                 <Box sx={modalStyle}>
+                    {/*Title */}
                     <Typography id="modal-modal-title" fontWeight={'fontWeight.title'} variant="h6" component="h1" marginBottom={'20px'} textAlign={'center'} gutterBottom>
                     List Favorites
                     </Typography>
+                    {/* search bar */}
                     <TextField 
                     onChange={(e) => setText(e.target.value)}
                     id="outlined-search" placeholder="Search…" type="search" 
@@ -102,12 +109,23 @@ const ModalListFavorites = (props) => {
                     sx={{
                       marginBottom: '10px', 
                       '& .MuiOutlinedInput-root': {
-                        borderRadius: '10px', // Điều chỉnh border-radius tại đây
-                        bgcolor: 'background.list_items',
+                        borderRadius: '10px',
+                        bgcolor: 'background.inputAddAdvices',
                       },
                     }}
                     />
+                    {/* list favorite / duyêt từng phần tử trong itemsOnPage*/}
                     <List sx={{ width: '100%', bgcolor: 'background.list', borderRadius: '10px', marginBottom: '5px' }}>
+                      {/* nếu không có bất kỳ favorite nào */}
+                        {itemsOnPage.length <= 0 ? 
+                          <Typography 
+                            textAlign={'center'} 
+                            fontSize={15} 
+                            fontWeight={'fontWeight.title'}
+                            >Nothing here!</Typography>
+                          : null
+                        }
+                      {/* nếu có bất kì favorite nào */}
                         {itemsOnPage.map((advice, index) => {
                           const labelId = `#advice-${advice.id}`;
                             return (
@@ -129,6 +147,7 @@ const ModalListFavorites = (props) => {
                             );
                         })}
                     </List>
+                    {/*pagination bar*/}
                     <Stack spacing={2} alignItems={'center'}>
                         <Pagination count={totalPages} page={page} onChange={hanldeClickPage}/>
                     </Stack>

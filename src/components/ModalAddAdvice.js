@@ -31,7 +31,7 @@ const ModalAddAdvice = (props) => {
         borderRadius: '15px',
         bgcolor: 'background.box',
     };
-    //input textarea
+    //input textarea: custom base mui
     const blue = {
         100: '#DAECFF',
         200: '#b6daff',
@@ -86,9 +86,11 @@ const ModalAddAdvice = (props) => {
     );
     return (
         <>
+            {/*add icon */}
             <IconButton onClick={handleOpen} aria-label="add advice" title='Add advice'>
               <AddIcon fontSize='medium'/>
             </IconButton>
+            {/* modal */}
             <Modal
               open={open}
               onClose={handleClose}
@@ -99,6 +101,7 @@ const ModalAddAdvice = (props) => {
               aria-labelledby="modal-modal-title"
               aria-describedby="modal-modal-description"
             >
+              {/*hiệu ứng / title, input, btn */}
               <Fade in={open}>
                 <Box sx={modalStyle}>
                   <Typography id="modal-modal-title" fontWeight={'fontWeight.title'} variant="h6" component="h1" marginBottom={'20px'} textAlign={'center'} gutterBottom>
