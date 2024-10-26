@@ -30,16 +30,16 @@ const ModalListFavorites = (props) => {
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
     const modalStyle = {
-        position: 'absolute',
-        top: '50%',
-        left: '50%',
-        transform: 'translate(-50%, -50%)',
-        width: 600,
-        border: '0px solid #000',
-        boxShadow: 24,
-        p: 4,
-        borderRadius: '15px',
-        bgcolor: 'background.box',
+      position: 'absolute',
+      top: '50%',
+      left: '50%',
+      transform: 'translate(-50%, -50%)',
+      width: { xs: '90%', sm: 600 },
+      border: '0px solid #000',
+      boxShadow: 24,
+      p: 4,
+      borderRadius: '15px',
+      bgcolor: 'background.box',
     };
     //search bar
     //...

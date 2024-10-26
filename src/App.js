@@ -174,6 +174,7 @@ function App() {
       alert('Sharing is not supported on this device.');
     }
   };
+
   //stage quản lý việc chuyển đổi mode sáng tối
   const [ mode, setMode ] = useState(true);
   //theme / theo dõi các thuộc tính chung
@@ -202,7 +203,6 @@ function App() {
   const toggleMode = () => {
     setMode((prev) => !prev);
   };
-
   return (
     <Box sx={{position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, overflow: 'hidden', zIndex: -1}}>
       {/*add bg động tùy từng mode*/}
@@ -223,7 +223,11 @@ function App() {
         }}
       />
       {/*advice box*/}
-      <Box sx={{position: 'absolute', left: '10%', right: '10%'}}>
+      <Box sx={{
+        position: 'absolute',
+        left: { xs: '5%', md: '10%' },
+        right: { xs: '5%', md: '10%' }}}
+        >
         <ThemeProvider theme={theme}>
           <CssBaseline />
           <Grid sx={{

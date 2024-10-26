@@ -22,7 +22,7 @@ const ModalDetailFavorite = (props) => {
         top: '50%',
         left: '50%',
         transform: 'translate(-50%, -50%)',
-        width: 600,
+        width: { xs: '90%', sm: 600 },
         border: '0px solid #000',
         boxShadow: 24,
         p: 4,
@@ -56,7 +56,7 @@ const ModalDetailFavorite = (props) => {
             {/*hiệu ứng mơe đóng/ hiển thị chi tiết advice */}
             <Fade in={open}>
                 <Box sx={modalStyle}>
-                    <Typography variant="subtitle1" sx={{ marginBottom: 1, color: 'adviceID' }} fontWeight={1000}>
+                    <Typography variant="subtitle1" sx={{ marginBottom: 1, color: 'adviceID' }} color='#00ffd2' fontWeight={1000}>
                         Advice#{props.advice.id}
                     </Typography>
                     <Typography gutterBottom variant="h5" component="div" fontStyle={'italic'} fontWeight={800}>
