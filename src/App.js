@@ -205,7 +205,7 @@ function App() {
   };
   //share x
   const shareUrl = encodeURIComponent('https://yourwebsite.com/advice'); // URL bạn muốn chia sẻ
-  const shareText = encodeURIComponent("Check out this great piece of advice!"); // Nội dung bạn muốn chia sẻ
+  const shareText = encodeURIComponent(advice.content); // Nội dung bạn muốn chia sẻ
   const twitterShareUrl = `https://twitter.com/intent/tweet?text=${shareText}&url=${shareUrl}`;
 
   return (
