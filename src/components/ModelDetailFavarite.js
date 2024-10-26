@@ -8,9 +8,10 @@ import Modal from '@mui/material/Modal';
 //list
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
-
+import IconButton from '@mui/material/IconButton';
 import Fade from '@mui/material/Fade';
 
+import ShareIcon from '@mui/icons-material/Share';
 
 const ModalDetailFavorite = (props) => {
     //modal
@@ -62,6 +63,12 @@ const ModalDetailFavorite = (props) => {
                     <Typography gutterBottom variant="h5" component="div" fontStyle={'italic'} fontWeight={800}>
                         "{fullContent}"
                     </Typography>
+                    {/*share icon*/}
+                    <IconButton href={props.twitterShareUrl}
+                        target="_blank"
+                        aria-label="share" title='Share'>
+                        <ShareIcon />
+                    </IconButton>
                 </Box>
             </Fade>
         </Modal>

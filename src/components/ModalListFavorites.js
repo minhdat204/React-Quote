@@ -141,7 +141,7 @@ const ModalListFavorites = (props) => {
                                     disablePadding
                                 >
                                     {/*component*/}
-                                    <ModalDetailFavorite labelId={labelId} advice={advice}/>
+                                    <ModalDetailFavorite labelId={labelId} advice={advice} twitterShareUrl={props.twitterShareUrl}/>
                                 </ListItem>
                                 </>
                             );

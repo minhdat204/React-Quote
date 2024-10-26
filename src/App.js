@@ -203,6 +203,11 @@ function App() {
   const toggleMode = () => {
     setMode((prev) => !prev);
   };
+  //share x
+  const shareUrl = encodeURIComponent('https://yourwebsite.com/advice'); // URL bạn muốn chia sẻ
+  const shareText = encodeURIComponent("Check out this great piece of advice!"); // Nội dung bạn muốn chia sẻ
+  const twitterShareUrl = `https://twitter.com/intent/tweet?text=${shareText}&url=${shareUrl}`;
+
   return (
     <Box sx={{position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, overflow: 'hidden', zIndex: -1}}>
       {/*add bg động tùy từng mode*/}
@@ -265,7 +270,9 @@ function App() {
                   <CasinoIcon />
                 </IconButton>
                 {/*share icon*/}
-                <IconButton onClick={handleShare} aria-label="share" title='Share'>
+                <IconButton href={twitterShareUrl}
+                  target="_blank"
+                  aria-label="share" title='Share'>
                   <ShareIcon />
                 </IconButton>
                 {/*mode icon + chuyển đổi icon tùy vào mode*/}
@@ -274,7 +281,7 @@ function App() {
                 </IconButton>
                 {/*component*/}
                 <ModalAddAdvice handleAddAdvice={handleAddAdvice}/>
-                <ModalListFavorites favoriteList={favoriteList} saveAdvice={saveAdvice}/>
+                <ModalListFavorites favoriteList={favoriteList} saveAdvice={saveAdvice} twitterShareUrl={twitterShareUrl}/>
               </CardActions>
             </Card>
           </Grid>
