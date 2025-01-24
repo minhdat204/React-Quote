@@ -2,6 +2,8 @@
 
 Random Advice là một ứng dụng web được xây dựng bằng React, cho phép người dùng khám phá và lưu trữ những lời khuyên hữu ích. Dự án này sử dụng localStorage để lưu trữ dữ liệu, đảm bảo trải nghiệm người dùng liền mạch.
 
+🔗 [Link website](https://react-advice.wuaze.com)
+
 ![Demo của ứng dụng](demo.png)
 
 ## ✨ Tính năng
